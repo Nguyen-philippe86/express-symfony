@@ -36,3 +36,4 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/mon-compte, roles: ROLE_USER }
+        - { path: ^/address, roles: ROLE_USER }
