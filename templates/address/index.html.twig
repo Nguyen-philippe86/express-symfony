@@ -4,15 +4,15 @@
 
 {% block body %}
 
-{{ include("partials/title_section.html.twig", {'name':'Add Address'}) }}
+{{ include("partials/title_section.html.twig", {'name':'Address'}) }}
     <div class="login_register_wrap section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-md-10">
                     <div class="login_wrap">
                         <div class="padding_eight_all bg-white">
                             <div class="heading_s1">
-                                <h3>Add Address</h3>
+                                <h3>My Address</h3>
                             </div>
                             <div class="content">
                                 <table class="table">
@@ -51,7 +51,7 @@
                                     </tbody>
                                 </table>
 
-                                <a href="{{ path('address_new') }}">Create new</a>
+                                <a href="{{ path('address_new') }}" class="btn btn-border-fill btn-block">Create new</a>
                             </div>                           
                         </div>
                     </div>
