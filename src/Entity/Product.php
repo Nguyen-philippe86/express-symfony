@@ -92,6 +92,11 @@ class Product
         $this->reviewsProducts = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -206,7 +211,7 @@ class Product
     }
 
     /**
-     * @return Collection|Categories[]
+     * @return Categories[]|Collection
      */
     public function getCategory(): Collection
     {
