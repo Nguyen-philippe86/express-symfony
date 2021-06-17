@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,20 @@ class HomeController extends AbstractController
             'productFeatured' => $productFeatured,
             'productSpecialOffers' => $productSpecialOffers,
             'productNewArrival' => $productNewArrival,
+        ]);
+    }
+
+    /**
+     * @Route("/produit/{slug}", name="product")
+     */
+    public function show(Product $product): Response
+    {
+        if (!$product) {
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('home/show.html.twig', [
+            'product' => $product,
         ]);
     }
 }
