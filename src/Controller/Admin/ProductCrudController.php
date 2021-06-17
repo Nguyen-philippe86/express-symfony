@@ -8,7 +8,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -23,16 +25,19 @@ class ProductCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm()->hideOnIndex(),
-            TextField::new('name'),
-            TextEditorField::new('description'),
-            TextEditorField::new('moreInformation'),
-            MoneyField::new('price')->setCurrency('EUR'),
-            BooleanField::new('isBestSeller'),
-            BooleanField::new('isNewArrival'),
-            BooleanField::new('isFeatured'),
-            BooleanField::new('isSpecialOffer'),
-            AssociationField::new('category'),
-            ImageField::new('image')
+            TextField::new('name', 'Nom'),
+            SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex(),
+            TextEditorField::new('description', 'Description'),
+            TextEditorField::new('moreInformation', 'Plus d\'informations')->hideOnIndex(),
+            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
+            IntegerField::new('quantity', 'Quantité'),
+            TextField::new('tags', 'Tags'),
+            BooleanField::new('isBestSeller', 'Best seller'),
+            BooleanField::new('isNewArrival', 'Nouveautés'),
+            BooleanField::new('isFeatured', 'Est présenté'),
+            BooleanField::new('isSpecialOffer', 'Offre spécial'),
+            AssociationField::new('category', 'Catégorie'),
+            ImageField::new('image', 'Image')
                 ->setBasePath('uploads/products/')
                 ->setUploadDir('public/uploads/products')
                 ->setUploadedFileNamePattern('[randomhash],[extension]')
